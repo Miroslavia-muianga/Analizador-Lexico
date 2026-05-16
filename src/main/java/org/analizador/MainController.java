@@ -92,7 +92,7 @@ public class MainController implements Initializable {
         // actualiza a barra de status
         long specials = tokens.stream().filter(t -> t.tipo == TipoToken.SIMBOLO_ESPECIAL).count();
         long idents   = tokens.stream().filter(t -> t.tipo == TipoToken.IDENTIFICADOR).count();
-        long errs     = tokens.stream().filter(t -> t.tipo == TipoToken.ERRO).count();
+        long errs     = tokens.stream().filter(t -> t.tipo == TipoToken.LEXEMA_NAO_RECONHECIDO).count();
 
 
         lblTotal.setText("Tokens: " + (tokens.size() - 1)); // -1 para excluir EOF

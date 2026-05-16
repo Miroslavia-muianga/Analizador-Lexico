@@ -126,6 +126,33 @@ public class Lexer {
         int startCol = coluna;
         StringBuilder sb = new StringBuilder();
 
+        if (peek()=='"') {
+            sb.append(advance()); // consome o ' inicial
+
+            while (pos < codigo.length() && peek() != '"') {
+                sb.append(advance());
+            }
+
+            if (pos >= codigo.length()) {
+                // chegou ao fim sem fechar a string
+                String msg = String.format("Linha %d, col %d: constante de caractere não terminada: %s", startLine, startCol, sb);
+                erros.add(msg);
+                return new Token(TipoToken.LEXEMA_NAO_RECONHECIDO, sb.toString(), startLine, startCol);
+            }
+        } else if (peek()=='\'') {
+            sb.append(advance()); // consome o ' inicial
+
+            while (pos < codigo.length() && peek() != '\'') {
+                sb.append(advance());
+            }
+
+            if (pos >= codigo.length()) {
+                // chegou ao fim sem fechar a string
+                String msg = String.format("Linha %d, col %d: constante de caractere não terminada: %s", startLine, startCol, sb);
+                erros.add(msg);
+                return new Token(TipoToken.LEXEMA_NAO_RECONHECIDO, sb.toString(), startLine, startCol);
+            }
+        }
         sb.append(advance()); // consome o ' inicial
 
         while (pos < codigo.length() && peek() != '\'') {
@@ -136,7 +163,7 @@ public class Lexer {
             // chegou ao fim sem fechar a string
             String msg = String.format("Linha %d, col %d: constante de caractere não terminada: %s", startLine, startCol, sb);
             erros.add(msg);
-            return new Token(TipoToken.ERRO, sb.toString(), startLine, startCol);
+            return new Token(TipoToken.LEXEMA_NAO_RECONHECIDO, sb.toString(), startLine, startCol);
         }
 
         sb.append(advance()); // consome o ' final
@@ -180,7 +207,7 @@ public class Lexer {
             default:
                 String msg = String.format("Linha %d, col %d: símbolo inválido '%c'", startLine, startCol, c);
                 erros.add(msg);
-                return new Token(TipoToken.ERRO, String.valueOf(c), startLine, startCol);
+                return new Token(TipoToken.LEXEMA_NAO_RECONHECIDO, String.valueOf(c), startLine, startCol);
         }
     }
 

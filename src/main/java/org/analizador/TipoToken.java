@@ -14,6 +14,6 @@ public enum TipoToken {
     //SIMBOLOS
     SIMBOLO_ESPECIAL,
 
-    ERRO,
+    LEXEMA_NAO_RECONHECIDO,
     EOF
 }
