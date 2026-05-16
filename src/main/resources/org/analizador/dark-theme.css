@@ -1,0 +1,185 @@
+/* CORES BASE */
+.root-pane {
+    -fx-background-color: #1e1e1e;
+    -fx-font-family: "JetBrains Mono", "Consolas", monospace;
+}
+
+/* BARRA SUPERIOR */
+.top-bar {
+    -fx-background-color: #2d2d2d;
+    -fx-padding: 10 16 10 16;
+    -fx-border-color: #3c3c3c;
+    -fx-border-width: 0 0 1 0;
+}
+
+.app-title {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+/* BOTÕES */
+.btn-primary {
+    -fx-background-color: #0078d4;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 13px;
+    -fx-padding: 6 16 6 16;
+    -fx-background-radius: 4;
+    -fx-cursor: hand;
+}
+
+.btn-primary:hover {
+    -fx-background-color: #1a8fe3;
+}
+
+.btn-secondary {
+    -fx-background-color: #3c3c3c;
+    -fx-text-fill: #cccccc;
+    -fx-font-size: 13px;
+    -fx-padding: 6 16 6 16;
+    -fx-background-radius: 4;
+    -fx-cursor: hand;
+}
+
+.btn-secondary:hover {
+    -fx-background-color: #505050;
+}
+
+/* PAINÉIS */
+.panel {
+    -fx-background-color: #1e1e1e;
+    -fx-padding: 0;
+}
+
+.panel-title {
+    -fx-text-fill: #858585;
+    -fx-font-size: 11px;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-padding: 6 12 6 12;
+    -fx-background-color: #2d2d2d;
+    -fx-border-color: #3c3c3c;
+    -fx-border-width: 0 0 1 0;
+}
+
+/* EDITOR */
+.code-editor {
+    -fx-background-color: #1e1e1e;
+    -fx-text-fill: #d4d4d4;
+    -fx-font-family: "JetBrains Mono", "Consolas", monospace;
+    -fx-font-size: 14px;
+    -fx-border-width: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 8;
+}
+
+.code-editor .content {
+    -fx-background-color: #1e1e1e;
+}
+
+/* NUMERAÇÃO DE LINHAS */
+.line-numbers {
+    -fx-background-color: #2d2d2d;
+    -fx-text-fill: #858585;
+    -fx-font-family: "JetBrains Mono", "Consolas", monospace;
+    -fx-font-size: 14px;
+    -fx-border-width: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 8 4 8 4;
+    -fx-alignment: CENTER_RIGHT;
+}
+
+.line-numbers .content {
+    -fx-background-color: #2d2d2d;
+}
+
+/* TABELA DE TOKENS */
+.token-table {
+    -fx-background-color: #1e1e1e;
+    -fx-border-width: 0;
+}
+
+.token-table .column-header {
+    -fx-background-color: #2d2d2d;
+    -fx-text-fill: #dfdbdb;
+    -fx-font-size: 12px;
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+.token-table .column-header-background {
+    -fx-background-color: #2d2d2d;
+}
+
+.token-table .table-row-cell {
+    -fx-background-color: #1e1e1e;
+    -fx-text-fill:  #fde3fd;
+    -fx-font-size: 13px;
+    -fx-border-color: #2d2d2d;
+    -fx-border-width: 0 0 1 0;
+}
+
+.token-table .table-row-cell:selected {
+    -fx-background-color: #094771;
+     -fx-text-fill:  #fde3fd;
+}
+
+.token-table .table-row-cell:hover {
+    -fx-background-color: #2a2d2e;
+     -fx-text-fill:  #fde3fd;
+}
+
+/* LISTA DE ERROS */
+.error-list {
+    -fx-background-color: #1e1e1e;
+    -fx-border-width: 0;
+}
+
+.error-list .list-cell {
+    -fx-background-color: #1e1e1e;
+    -fx-text-fill: #f48771;
+    -fx-font-size: 12px;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-padding: 6 12 6 12;
+    -fx-border-color: #2d2d2d;
+    -fx-border-width: 0 0 1 0;
+}
+
+.error-list .list-cell:selected {
+    -fx-background-color: #094771;
+     -fx-text-fill: #db0505;
+}
+
+/* BARRA DE STATUS */
+.status-bar {
+    -fx-background-color: #007acc;
+    -fx-padding: 4 16 4 16;
+}
+
+.status-label {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 12px;
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+.status-label-muted {
+    -fx-text-fill: #cce7ff;
+    -fx-font-size: 12px;
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+/* PLACEHOLDER */
+.placeholder-label {
+    -fx-text-fill: #555555;
+    -fx-font-size: 13px;
+}
+
+/* SPLIT PANE */
+.main-split {
+    -fx-background-color: #1e1e1e;
+    -fx-padding: 0;
+}
+
+.split-pane-divider {
+    -fx-background-color: #3c3c3c;
+    -fx-padding: 0 1 0 1;
+}
