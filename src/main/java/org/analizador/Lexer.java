@@ -23,6 +23,8 @@ public class Lexer {
     );
 
 
+
+
     public Lexer(String codigo) {
         this.codigo = codigo;
         this.pos = 0;
@@ -88,7 +90,7 @@ public class Lexer {
         return Character.isLetterOrDigit(c);
     }
 
-    private Token lerIdentificadorOuPalavraReservada() {
+    private Token lerIdentificadorOuSimbolo() {
         int linhaInicial = linha;
         int colunaInicial = coluna;
         StringBuilder sb = new StringBuilder();
@@ -97,18 +99,18 @@ public class Lexer {
             sb.append(advance());
         }
 
-        String value = sb.toString();
-        String lower = value.toLowerCase();
+        String valor = sb.toString();
+        String lower = valor.toLowerCase();
 
         if (SIMBOLOS_ESPECIAIS.contains(lower)) {
-            return new Token(TipoToken.SIMBOLO_ESPECIAL, value, linhaInicial, colunaInicial);
+            return new Token(TipoToken.SIMBOLO_ESPECIAL, valor, linhaInicial, colunaInicial);
         }
 
-        return new Token(TipoToken.IDENTIFICADOR, value, linhaInicial, colunaInicial);
+        return new Token(TipoToken.IDENTIFICADOR, valor, linhaInicial, colunaInicial);
     }
 
     private Token lerInteiro() {
-        int linhaInicialine = linha;
+        int linhaInicial = linha;
         int colunaInicial = coluna;
         StringBuilder sb = new StringBuilder();
 
@@ -116,7 +118,7 @@ public class Lexer {
             sb.append(advance());
         }
 
-        return new Token(TipoToken.INTEGER_CONSTANT, sb.toString(), linhaInicialine, colunaInicial);
+        return new Token(TipoToken.CONSTANTE_INTEIRA, sb.toString(), linhaInicial, colunaInicial);
     }
 
     private Token lerConstantChar() {
@@ -196,7 +198,7 @@ public class Lexer {
 
             // identificadores e palavras-chave
             if (isLetter(peek())) {
-                tokens.add(lerIdentificadorOuPalavraReservada());
+                tokens.add(lerIdentificadorOuSimbolo());
                 continue;
             }
 
@@ -212,8 +214,7 @@ public class Lexer {
                 continue;
             }
 
-            // operadores e símbolos
-            tokens.add(lerOperadorOuSymbol());
+
         }
 
         tokens.add(new Token(TipoToken.EOF, "EOF", linha, coluna));

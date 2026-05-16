@@ -2,11 +2,9 @@ package org.analizador;
 
 public enum TipoToken {
 
-    //palavra reservada
-    PALAVRA_RESERVADA,
 
     //CONSTANTES
-    INTEGER_CONSTANT,
+    CONSTANTE_INTEIRA,
     CHARACTER_CONSTANT,
 
     //identificadores
