@@ -22,8 +22,10 @@ public class Lexer {
             "[", "]", ":=", ".", ",", ";", ":" ,".."
     );
 
-
-
+public static final Set<Character> DIGITOS =Set.of('0','1','2','3','4','5','6','7','8','9');
+public static final Set<Character> LETRAS = Set.of('a','b','c','d','e','f','g','h','i','j','k','l',
+        'm','n','o','p','q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H','I','J','K',
+        'L','M','N','O','P','Q','R', 'S','T','U','V','W','X','Y','Z');
 
     public Lexer(String codigo) {
         this.codigo = codigo;
@@ -83,11 +85,15 @@ public class Lexer {
     }
 
     private boolean isLetter(char c) {
-        return Character.isLetter(c);
+        return LETRAS.contains(c);
     }
 
     private boolean isLetterOrDigit(char c) {
-        return Character.isLetterOrDigit(c);
+        return LETRAS.contains(c)|| DIGITOS.contains(c);
+    }
+
+    public boolean isDigit(char c) {
+        return DIGITOS.contains(c);
     }
 
     private Token lerIdentificadorOuSimbolo() {
@@ -114,7 +120,7 @@ public class Lexer {
         int colunaInicial = coluna;
         StringBuilder sb = new StringBuilder();
 
-        while (pos < codigo.length() && Character.isDigit(peek())) {
+        while (pos < codigo.length() && isDigit(peek())) {
             sb.append(advance());
         }
 
@@ -170,7 +176,7 @@ public class Lexer {
         return new Token(TipoToken.CHARACTER_CONSTANT, sb.toString(), startLine, startCol);
     }
 
-    private Token lerOperadorOuSymbol() {
+    /*private Token lerOperadorOuSymbol() {
         int startLine = linha;
         int startCol = coluna;
         char c = advance();
@@ -209,7 +215,7 @@ public class Lexer {
                 erros.add(msg);
                 return new Token(TipoToken.LEXEMA_NAO_RECONHECIDO, String.valueOf(c), startLine, startCol);
         }
-    }
+    }*/
 
     public List<Token> tokenize() {
         while (pos < codigo.length()) {
@@ -241,7 +247,7 @@ public class Lexer {
                 continue;
             }
 
-            tokens.add(lerOperadorOuSymbol());
+            //tokens.add(lerOperadorOuSymbol());
 
         }
 
