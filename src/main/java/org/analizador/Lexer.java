@@ -176,7 +176,7 @@ public static final Set<Character> LETRAS = Set.of('a','b','c','d','e','f','g','
         return new Token(TipoToken.CHARACTER_CONSTANT, sb.toString(), startLine, startCol);
     }
 
-    /*private Token lerOperadorOuSymbol() {
+    private Token lerOperadorOuSymbol() {
         int startLine = linha;
         int startCol = coluna;
         char c = advance();
@@ -215,7 +215,7 @@ public static final Set<Character> LETRAS = Set.of('a','b','c','d','e','f','g','
                 erros.add(msg);
                 return new Token(TipoToken.LEXEMA_NAO_RECONHECIDO, String.valueOf(c), startLine, startCol);
         }
-    }*/
+    }
 
     public List<Token> tokenize() {
         while (pos < codigo.length()) {
@@ -247,7 +247,7 @@ public static final Set<Character> LETRAS = Set.of('a','b','c','d','e','f','g','
                 continue;
             }
 
-            //tokens.add(lerOperadorOuSymbol());
+            tokens.add(lerOperadorOuSymbol());
 
         }
 
