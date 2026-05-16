@@ -101,7 +101,7 @@
 
 .token-table .column-header {
     -fx-background-color: #2d2d2d;
-    -fx-text-fill: #dfdbdb;
+    -fx-text-fill: #ffffff;
     -fx-font-size: 12px;
     -fx-font-family: "Segoe UI", sans-serif;
 }
@@ -112,7 +112,7 @@
 
 .token-table .table-row-cell {
     -fx-background-color: #1e1e1e;
-    -fx-text-fill:  #fde3fd;
+    -fx-text-fill:  #ffffff;
     -fx-font-size: 13px;
     -fx-border-color: #2d2d2d;
     -fx-border-width: 0 0 1 0;
@@ -120,12 +120,12 @@
 
 .token-table .table-row-cell:selected {
     -fx-background-color: #094771;
-     -fx-text-fill:  #fde3fd;
+     -fx-text-fill:  #ffffff;
 }
 
 .token-table .table-row-cell:hover {
     -fx-background-color: #2a2d2e;
-     -fx-text-fill:  #fde3fd;
+     -fx-text-fill:  #ffffff;
 }
 
 /* LISTA DE ERROS */
