@@ -21,7 +21,7 @@ public class MainApp extends Application {
                 getClass().getResource("/org/analizador/dark-theme.css").toExternalForm()
         );
 
-        stage.setTitle("Mini-Pascal Lexer");
+        stage.setTitle("Analizador Lexico do Mini-Pascal");
         stage.setMinWidth(900);
         stage.setMinHeight(600);
         stage.setScene(scene);

@@ -214,6 +214,7 @@ public class Lexer {
                 continue;
             }
 
+            tokens.add(lerOperadorOuSymbol());
 
         }
 

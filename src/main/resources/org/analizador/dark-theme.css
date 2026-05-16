@@ -25,12 +25,13 @@
     -fx-text-fill: #ffffff;
     -fx-font-size: 13px;
     -fx-padding: 6 16 6 16;
-    -fx-background-radius: 4;
+    -fx-background-radius: 5;
     -fx-cursor: hand;
 }
 
 .btn-primary:hover {
     -fx-background-color: #1a8fe3;
+    -fx-box-shadow: 0 0 8 blue ;
 }
 
 .btn-secondary {
@@ -126,6 +127,10 @@
 .token-table .table-row-cell:hover {
     -fx-background-color: #2a2d2e;
      -fx-text-fill:  #ffffff;
+}
+.token-table .table-cell {
+    -fx-text-fill: #ffffff;
+    -fx-padding: 6 10 6 10;
 }
 
 /* LISTA DE ERROS */

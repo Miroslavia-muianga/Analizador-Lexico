@@ -80,7 +80,6 @@ public class MainController implements Initializable {
         // preenche a tabela de tokens (exclui o EOF)
         tokenTable.getItems().clear();
         for (Token t : tokens) {
-            tokenTable.getItems().add(t);
             if (t.tipo != TipoToken.EOF) {
                 tokenTable.getItems().add(t);
             }
