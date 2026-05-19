@@ -132,8 +132,9 @@ public static final Set<Character> LETRAS = Set.of('a','b','c','d','e','f','g','
         int startCol = coluna;
         StringBuilder sb = new StringBuilder();
 
+        // CASO1: ASPAS DUPLAS
         if (peek()=='"') {
-            sb.append(advance()); // consome o ' inicial
+            sb.append(advance()); // consome o " inicial
 
             while (pos < codigo.length() && peek() != '"') {
                 sb.append(advance());
@@ -145,35 +146,33 @@ public static final Set<Character> LETRAS = Set.of('a','b','c','d','e','f','g','
                 erros.add(msg);
                 return new Token(TipoToken.LEXEMA_NAO_RECONHECIDO, sb.toString(), startLine, startCol);
             }
-        } else if (peek()=='\'') {
+
+            sb.append(advance()); //le o " final
+            return new Token(TipoToken.CHARACTER_CONSTANT, sb.toString(),startLine,startCol);
+        }
+
+        //caso 2: aspas simples coom um caractere
+        if (peek()=='\'') {
             sb.append(advance()); // consome o ' inicial
 
-            while (pos < codigo.length() && peek() != '\'') {
+            //le exactamente um caratere
+            if (pos < codigo.length() && peek() != '\'') {
                 sb.append(advance());
             }
 
-            if (pos >= codigo.length()) {
+
+            if (peek() == '\'') {
+                sb.append(advance());
+                return new Token(TipoToken.CHARACTER_CONSTANT, sb.toString(), startLine, startCol);
+            } else {
                 // chegou ao fim sem fechar a string
                 String msg = String.format("Linha %d, col %d: constante de caractere não terminada: %s", startLine, startCol, sb);
                 erros.add(msg);
                 return new Token(TipoToken.LEXEMA_NAO_RECONHECIDO, sb.toString(), startLine, startCol);
             }
         }
-        sb.append(advance()); // consome o ' inicial
-
-        while (pos < codigo.length() && peek() != '\'') {
-            sb.append(advance());
-        }
-
-        if (pos >= codigo.length()) {
-            // chegou ao fim sem fechar a string
-            String msg = String.format("Linha %d, col %d: constante de caractere não terminada: %s", startLine, startCol, sb);
-            erros.add(msg);
-            return new Token(TipoToken.LEXEMA_NAO_RECONHECIDO, sb.toString(), startLine, startCol);
-        }
-
-        sb.append(advance()); // consome o ' final
-        return new Token(TipoToken.CHARACTER_CONSTANT, sb.toString(), startLine, startCol);
+        erros.add(String.format("Linha %d, col %d: constante de caractere não terminada: %s", startLine, startCol, sb));
+        return new Token(TipoToken.LEXEMA_NAO_RECONHECIDO, sb.toString(), startLine, startCol);
     }
 
     private Token lerOperadorOuSymbol() {
@@ -241,7 +240,7 @@ public static final Set<Character> LETRAS = Set.of('a','b','c','d','e','f','g','
             }
 
             // constantes de caracteres
-            if (peek() == '\'') {
+            if (peek() == '\'' || peek() == '"') {
                 tokens.add(lerConstantChar());
                 continue;
             }
