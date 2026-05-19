@@ -132,33 +132,6 @@ public static final Set<Character> LETRAS = Set.of('a','b','c','d','e','f','g','
         int startCol = coluna;
         StringBuilder sb = new StringBuilder();
 
-        if (peek()=='"') {
-            sb.append(advance()); // consome o ' inicial
-
-            while (pos < codigo.length() && peek() != '"') {
-                sb.append(advance());
-            }
-
-            if (pos >= codigo.length()) {
-                // chegou ao fim sem fechar a string
-                String msg = String.format("Linha %d, col %d: constante de caractere não terminada: %s", startLine, startCol, sb);
-                erros.add(msg);
-                return new Token(TipoToken.LEXEMA_NAO_RECONHECIDO, sb.toString(), startLine, startCol);
-            }
-        } else if (peek()=='\'') {
-            sb.append(advance()); // consome o ' inicial
-
-            while (pos < codigo.length() && peek() != '\'') {
-                sb.append(advance());
-            }
-
-            if (pos >= codigo.length()) {
-                // chegou ao fim sem fechar a string
-                String msg = String.format("Linha %d, col %d: constante de caractere não terminada: %s", startLine, startCol, sb);
-                erros.add(msg);
-                return new Token(TipoToken.LEXEMA_NAO_RECONHECIDO, sb.toString(), startLine, startCol);
-            }
-        }
         sb.append(advance()); // consome o ' inicial
 
         while (pos < codigo.length() && peek() != '\'') {
@@ -171,6 +144,7 @@ public static final Set<Character> LETRAS = Set.of('a','b','c','d','e','f','g','
             erros.add(msg);
             return new Token(TipoToken.LEXEMA_NAO_RECONHECIDO, sb.toString(), startLine, startCol);
         }
+
 
         sb.append(advance()); // consome o ' final
         return new Token(TipoToken.CHARACTER_CONSTANT, sb.toString(), startLine, startCol);

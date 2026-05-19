@@ -2,10 +2,10 @@ package org.analizador;
 public class Token {
     public TipoToken tipo;
     public String valor;
-    public int linha;
-    public int coluna;
+    public Integer linha;
+    public Integer coluna;
 
-    public Token(TipoToken tipo, String valor, int linha, int coluna) {
+    public Token(TipoToken tipo, String valor, Integer linha, Integer coluna) {
         this.tipo = tipo;
         this.valor = valor;
         this.linha = linha;
@@ -28,7 +28,7 @@ public class Token {
         this.tipo = tipo;
     }
 
-    public int getLinha() {
+    public Integer getLinha() {
         return linha;
     }
 
@@ -36,7 +36,7 @@ public class Token {
         this.linha = linha;
     }
 
-    public int getColuna() {
+    public Integer getColuna() {
         return coluna;
     }
 
